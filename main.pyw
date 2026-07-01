@@ -189,27 +189,27 @@ class Browser(QMainWindow):
 
     def download_requested(self, download):
 
-    folder = QFileDialog.getExistingDirectory(
-        self,
-        "Select download folder"
-    )
-
-    if not folder:
-        download.cancel()
-        return
-
-    path = os.path.join(folder, download.downloadFileName())
-
-    download.setPath(path)
-    download.accept()
-
-    download.finished.connect(
-        lambda: QMessageBox.information(
+        folder = QFileDialog.getExistingDirectory(
             self,
-            "Download",
-            f"Download completed:\n{path}"
+            "Select download folder"
         )
-    )
+
+        if not folder:
+            download.cancel()
+            return
+
+        path = os.path.join(folder, download.downloadFileName())
+
+        download.setPath(path)
+        download.accept()
+
+        download.finished.connect(
+            lambda: QMessageBox.information(
+                self,
+                "Download",
+                f"Download completed:\n{path}"
+            )
+        )
 
     # ======================
     # TAB LOGIKA
