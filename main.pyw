@@ -1,8 +1,8 @@
-# UPDATE: 260702
+# UPDATE: 260701
 
 import sys
 from PyQt5.QtWidgets import *
-from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
 from PyQt5.QtCore import Qt, QUrl, QPoint, QTimer
 from PyQt5.QtGui import QIcon
 
@@ -39,6 +39,10 @@ class BrowserTab(QWidget):
 class Browser(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        QWebEngineProfile.defaultProfile().downloadRequested.connect(
+            self.download_requested
+        )
 
         self.setWindowTitle("Orangewolf Browser")
         self.setWindowIcon(QIcon("orangewolf_icon.png"))
@@ -182,6 +186,30 @@ class Browser(QMainWindow):
                 background: #444;
             }
         """)
+
+    def download_requested(self, download):
+
+    folder = QFileDialog.getExistingDirectory(
+        self,
+        "Select download folder"
+    )
+
+    if not folder:
+        download.cancel()
+        return
+
+    path = os.path.join(folder, download.downloadFileName())
+
+    download.setPath(path)
+    download.accept()
+
+    download.finished.connect(
+        lambda: QMessageBox.information(
+            self,
+            "Download",
+            f"Download completed:\n{path}"
+        )
+    )
 
     # ======================
     # TAB LOGIKA
