@@ -1,4 +1,4 @@
-# UPDATE: 260701
+# UPDATE: 260702
 
 import os
 import requests
@@ -41,7 +41,7 @@ def version_tuple(version):
 if __name__ == "__main__":
 
     update_urls = [
-        "https://raw.githubusercontent.com/KalaMadu2000/Orangewolf-Browser/refs/heads/main/main.pyw",
+        "https://raw.githubusercontent.com/KalaMadu2000/Orangewolf-Browser/refs/heads/main/main.py",
         "https://raw.githubusercontent.com/KalaMadu2000/Orangewolf-Browser/refs/heads/main/update_manager.py"
     ]
 
