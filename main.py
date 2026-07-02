@@ -311,6 +311,11 @@ class Browser(QMainWindow):
             self.showMaximized()
 
 
+def restart_program():
+    """Restart the current program."""
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
+
 # ======================
 # RUN
 # ======================

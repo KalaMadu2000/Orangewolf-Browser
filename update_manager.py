@@ -51,7 +51,7 @@ if __name__ == "__main__":
         print("Adam Szigeti > SHUT UP")
         exit()
 
-    with open("main.pyw", "r", encoding="utf-8") as f:
+    with open("main.py", "r", encoding="utf-8") as f:
         current_text = f.read()
 
     current_version = get_version(current_text)
@@ -104,3 +104,5 @@ if __name__ == "__main__":
 
         else:
             print("No update available.")
+            import browser_updater
+            browser_updater.run_update()
