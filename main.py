@@ -12,11 +12,11 @@ import os
 # TAB
 # ======================
 class BrowserTab(QWidget):
-    def __init__(self, url="https://duckduckgo.com/"):
+    def __init__(self, url="https://google.com/"):
         super().__init__()
 
         if not isinstance(url, str) or not url:
-            url = "https://duckduckgo.com/"
+            url = "https://google.com/"
 
         self.layout = QVBoxLayout()
         self.layout.setContentsMargins(0, 0, 0, 0)
